@@ -29,7 +29,7 @@ export class AppComponent {
     this.materials = this.materials_check.replace(/\s+/g," ").split(' ');
     this.isin=true;
     for(var i=0;i<this.materials.length;i++){
-      if(this.storage.indexOf(this.materials[i]){
+      if(this.storage.indexOf(this.materials[i])==-1){
         this.isin=false;
       })
     }
