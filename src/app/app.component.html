@@ -6,73 +6,45 @@
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
-  <style>
-    *{
-      margin: 0;
-      padding: 0;
-    }
-    html,body{
-      background: forestgreen;
-      height: 100%;
-      width: 100%;
-      display: flex;
-    }
-    a{
-      text-decoration: none;
-    }
-    ul{
-      list-style: none;
-    }
-    #container{
-      margin:auto;
-      width: 400px;
-      height: 350px;
-      background: #ffffff;
-      box-shadow: darkgrey 2px 2px 2px 2px;
-      box-sizing: border-box;
-      padding: 50px;
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
-    }
-    #login{
-      display: flex;
-      flex-direction: column;
-    }
-    .text{
-      background: #ccc;
-      border:none;
-      height: 60px;
-      margin-bottom: 10px;
-      text-indent: 10px;
-      font-size: 15px;
-    }
-
-    #log{
-      height: 60px;
-      background: green;
-      color: #ffffff;
-      font-size: 15px;
-      line-height: 60px;
-      text-align: center;
-    }
-    #text{
-      font-size: 12px;
-      text-align: center;
-      margin-top: 18px;
-    }
-  </style>
 </head>
 <body>
-  <div id="container">
-    <div id="login">
-        <input type="text" class="text" placeholder="username">
-        <input type="text" class="text" placeholder="password">
-        <a href="javascript:;" id="log">LOGIN</a>
+<app-header></app-header>
+<div class="jumbotron" style="margin-top:10px">
+  <h1 class="display-4">ADD DISH</h1>
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="inputGroup-sizing-default">Name</span>
     </div>
-    <div id="text">
-      <span>Not registered?</span>
-      <span style='color: green'>Create an account</span>
-    </div>
+    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default" [(ngModel)]="dish_name">
   </div>
 
+  <div class="input-group input-group-lg">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="inputGroup-sizing-lg">Materials</span>
+    </div>
+    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" [(ngModel)]="material_temp" placeholder="use space to list materials">
+  </div>
+  <a class="btn btn-primary btn-lg" href="#" role="button" (click)="add()">add!</a>
+</div>
+
+<div class="input-group mb-3">
+  <input type="text" class="form-control" placeholder="Do your materials match a dish?(also use space in order)" aria-label="Recipient's username" aria-describedby="button-addon2" [(ngModel)]="materials_check">
+  <div class="input-group-append">
+    <button class="btn btn-outline-secondary " type="button" id="button-addon2" (click)="check()">Check!</button>
+  </div>
+</div>
+<div class="card" style="width: 18rem;" *ngIf="isFalse">
+  <div class="card-body">
+    <h5 class="card-title">Sorry, no dish matches!</h5>
+  </div>
+</div>
+<div class="card" style="width: 18rem;" *ngIf="isTrue">
+  <div class="card-body">
+    <h5 class="card-title">Awesome!</h5>
+    <span>The dish name is: {{showname}}</span>
+  </div>
+</div>
 </body>
 </html>
